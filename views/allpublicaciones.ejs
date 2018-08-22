@@ -1,0 +1,39 @@
+<% include _header %>
+    <h1> Jugadores</h1>
+
+    <% allpublicaciones.forEach((publicacion)=>{ %>
+
+        <!--<form action="/createpdf" method="post">-->
+        <div class="panel panel-default">
+            <div id="pdfevent">
+                <div class="panel-heading">
+                    <a>
+                        <label class="col-form-label font-weight-bold">Publicación: </label>
+                    </a>
+                </div>
+                <div class="row">
+                    <label class="col-md-1 col-form-label font-italic">Nombre: </label>
+                    <label class="col-form-label font-weight-light"><%= publicacion.description %></label>
+                    <input type="hidden" name="titulo1" value="<%= publicacion.description %>">
+                </div>
+                <div class="row">
+                    <label class="col-md-1 col-form-label font-italic">Clase: </label>
+                    <label name="titulo2" value="<%= publicacion.category %>" class="col-form-label font-weight-light"><%= publicacion.category %></label>
+                    <input type="hidden" name="titulo2" value="<%= publicacion.category %>">
+                </div>
+                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+                <input type="button" onclick="printDiv('pdfevent')" value="PDF" class="btn btn-danger" />
+            </div>
+        </div>
+        <!--</form>-->
+
+        <a>----------------------------------------------</a>
+
+        <% }) %>
+
+            <% include _footer %>

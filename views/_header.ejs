@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Catalogo deportivo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <link rel="shortcut icon" href="http://www.genfavicon.com/inc/to_ico.php" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            padding: 30px;
+            font-family: "Helvetica Neue", helvetica, arial;
+            background-image: url('https://i.ytimg.com/vi/X3Zs-HZczUM/maxresdefault.jpg');
+            background-repeat: no-repeat;
+            background-size: 100%;
+        }
+        
+        #container {
+            position: relative;
+            width: 100%;
+        }
+        
+        #container:after {
+            content: "";
+            display: block;
+            clear: both;
+            height: 0;
+        }
+        
+        #menu {
+            position: relative;
+            float: left;
+            width: 100%;
+            padding: 0 20px;
+            border-radius: 3px;
+            box-shadow: #000000;
+        }
+        
+        #menu,
+        #menu ul {
+            list-style: none;
+        }
+        
+        #menu>li {
+            float: left;
+            position: center;
+            border-right: 1px solid #ffff;
+            /*lineas*/
+            box-shadow: 1px 0 0 #ffff;
+            perspective: 1000px;
+            opacity: .4;
+        }
+        
+        #menu>li:first-child {
+            border-left: 1px solid #ffff;
+            box-shadow: -1px 0 0 #ffff, 1px 0 0 #ffff;
+        }
+        
+        #menu a {
+            display: block;
+            position: relative;
+            z-index: 10;
+            padding: 13px 20px 13px 20px;
+            text-decoration: none;
+            color: #000000;
+            /*letras*/
+            line-height: 1;
+            font-weight: 600;
+            font-size: 12px;
+            letter-spacing: -.05em;
+            background: transparent;
+            text-shadow: 0 1px 1px #ffff;
+            transition: all .25s ease-in-out;
+        }
+        
+        #menu>li:hover>a {
+            background: #333;
+            color: #ffff;
+            text-shadow: none;
+        }
+        
+        #menu li ul {
+            position: absolute;
+            left: 0;
+            z-index: 1;
+            width: 200px;
+            padding: 0;
+            opacity: 0;
+            visibility: hidden;
+            border-bottom-left-radius: 4px;
+            border-bottom-right-radius: 4px;
+            background: transparent;
+            overflow: hidden;
+            transform-origin: 50% 0%;
+        }
+        
+        #menu li:hover ul {
+            padding: 15px 0;
+            background: #000000;
+            opacity: 1;
+            visibility: visible;
+            box-shadow: 1px 1px 7px #000000;
+            animation-name: swingdown;
+            animation-duration: 1s;
+            animation-timing-function: ease;
+        }
+        
+        @keyframes swingdown {
+            0% {
+                opacity: .99999;
+                transform: rotateX(90deg);
+            }
+            30% {
+                transform: rotateX(-20deg) rotateY(5deg);
+                animation-timing-function: ease-in-out;
+            }
+            65% {
+                transform: rotateX(20deg) rotateY(-3deg);
+                animation-timing-function: ease-in-out;
+            }
+            100% {
+                transform: rotateX(0);
+                animation-timing-function: ease-in-out;
+            }
+        }
+        
+        #menu li li a {
+            padding-left: 15px;
+            font-weight: 400;
+            color: #ffff;
+            text-shadow: none;
+            border-top: dotted 1px transparent;
+            border-bottom: dotted 1px transparent;
+            transition: all .15s linear;
+        }
+        
+        #menu li li a:hover {
+            color: #333;
+            border-top: dotted 1px #ffff;
+            border-bottom: dotted 1px #ffff;
+            background: rgba(0, 223, 252, .02);
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="container">
+        <div class="container">
+            <div class="navbar-header">
+
+            </div>
+            <ul id="menu">
+                <% if (currentUsuarios){ %>
+                    <li>
+                        <a href="/">Catalogo deportivo</a>
+
+                    </li>
+                    <li>
+                        <a href="/edit">
+            Hola, <%= currentUsuarios.name()%>
+            </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/crearpublicacion">Jugadores Registrados</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/allpublicaciones">Jugadores</a>
+                    </li>
+                    <li>
+                        <a href="/logout">Salir</a>
+                    </li>
+                    <li>
+                        <a>
+                            <%= currentUsuarios.rol()%>
+                        </a>
+                    </li>
+                    <li>
+
+                        <% } else {%>
+                            <li>
+                                <a href="/">Catalogo deportivo</a>
+                            </li>
+                            <li>
+                                <a href="/login">Entrar</a>
+                            </li>
+                            <li>
+                                <a href="/signup">Registrarse</a>
+                            </li>
+
+                    </li>
+                    <% } %>
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+        <% errors.forEach(function(error) { %>
+            <div class="alert alert-danger" role="alert">
+                <%= error %>
+            </div>
+            <% }) %>
+                <% infos.forEach(function(info) { %>
+                    <div class="alert alert-info" role="alert">
+                        <%= info %>
+                    </div>
+                    <% }) %>

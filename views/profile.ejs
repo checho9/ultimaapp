@@ -1,0 +1,20 @@
+<% include _header %>
+
+    <% if ((currentUsuarios) && (currentUsuarios.id === usuarios.id)){%>
+        <a href="/edit" class="pull-right"> Edita tu perfil </a>
+        <% } %>
+
+            <h1>
+                <%=usuarios.name() %>
+            </h1>
+            <h2> Se registro el
+                <%= usuarios.createdAt %>
+            </h2>
+
+            <% if (usuarios.bio){ %>
+                <p>
+                    <%=usuarios.bio %>
+                </p>
+                <% } %>
+
+                    <% include _footer %>

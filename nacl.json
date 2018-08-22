@@ -1,0 +1,99 @@
+[{
+        "group": "Portero",
+        "permissions": [{
+            "resource": "*",
+            "methods": "*",
+            "action": "allow"
+
+        }]
+    },
+    {
+        "group": "Usuario",
+        "permissions": [{
+                "resource": "/login",
+                "methods": ["GET", "POST"],
+                "action": "allow"
+            },
+            {
+                "resource": "/edit",
+                "methods": ["GET", "POST"],
+                "action": "allow"
+            },
+            {
+                "resource": "/logout",
+                "methods": ["GET", "POST"],
+                "action": "allow"
+            },
+            {
+                "resource": "/signup",
+                "methods": ["GET", "POST"],
+                "action": "allow"
+            },
+            {
+                "resource": "/crearpublicacion",
+                "methods": "*",
+                "action": "deny"
+            },
+            {
+                "resource": "/createpdf",
+                "methods": ["GET", "POST"],
+                "action": "deny"
+            },
+            {
+                "resource": "/allpublicaciones",
+                "methods": "*",
+                "action": "deny"
+            }
+
+        ]
+    },
+
+    {
+        "group": "Defensa",
+        "permissions": [{
+                "resource": "*",
+                "methods": ["GET", "POST"],
+                "action": "allow"
+            }, {
+                "resource": "/crearpublicacion",
+                "methods": "*",
+                "action": "allow"
+            },
+            {
+                "resource": "/createpdf",
+                "methods": ["GET", "POST"],
+                "action": "allow"
+            },
+            {
+                "resource": "/allpublicaciones",
+                "methods": "*",
+                "action": "allow"
+            }
+        ]
+    },
+    {
+        "group": "Medio",
+        "permissions": [{
+                "resource": "*",
+                "methods": ["GET", "POST"],
+                "action": "allow"
+            },
+            {
+                "resource": "/crearpublicacion",
+                "methods": "*",
+                "action": "allow"
+            },
+            {
+                "resource": "/createpdf",
+                "methods": ["GET", "POST"],
+                "action": "allow"
+            },
+            {
+                "resource": "/allpublicaciones",
+                "methods": "*",
+                "action": "allow"
+            }
+        ]
+    }
+
+]

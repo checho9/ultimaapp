@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<style>
+    #h1{
+        font-size:40px;
+        color:#FFFFFF;
+    }
+</style>
+<body>
+<% include _header %>
+    <br>
+    <div id="h1"><h1> Catalogo Deportivo</h1></div>
+    <div class="list-group"></div>
+    <a class="list-group-item list-group-item-primary">
+    Usuarios
+</a>
+
+    <% usuarios.forEach((usuarios)=> {%>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <a href="/usuarios/<%= usuarios.username %>" class="list-group-item list-group-item-action">
+                    <%= usuarios.name() %>
+                </a>
+            </div>
+            <% if (usuarios.bio) { %>
+                <div class="panel-body">
+                    <%= usuarios.bio %>
+                </div>
+                <% } %>
+        </div>
+        <% }) %>
+
+            <% include _footer %>

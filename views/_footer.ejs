@@ -1,0 +1,18 @@
+</div>
+<div class="footer-hsm text-center">
+    <div class="row">
+    </div>
+</div>
+</div>
+<script>
+    function printDiv(pdfevent) {
+        var contenido = document.getElementById(pdfevent).innerHTML;
+        var contenidoOriginal = document.body.innerHTML;
+        document.body.innerHTML = contenido;
+        window.print();
+        document.body.innerHTML = contenidoOriginal;
+    }
+</script>
+</body>
+
+</html>
